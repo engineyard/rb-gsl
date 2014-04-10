@@ -98,7 +98,7 @@ begin
   require 'rubygems'
 
   if spec = Gem::Specification.find_by_path('narray.h')
-    $LOCAL_LIBS = "-L#{File.join(narray = spec.full_gem_path, 'src')} " + $LOCAL_LIBS
+    $LOCAL_LIBS = "-L#{File.join(narray = spec.full_gem_path, 'src')} -l:narray.so" + $LOCAL_LIBS
     $CPPFLAGS   = "-I#{File.join(narray, spec.require_path)} "          + $CPPFLAGS
   end
 rescue LoadError
